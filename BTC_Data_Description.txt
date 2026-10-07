@@ -1,0 +1,94 @@
+CSV Field Definitions
+
+Data_BTC.csv
+
+Member 1 and member 2 follow the original cyclone identifier (SID) order. They do not indicate stronger and weaker members. All timestamps are UTC.
+
+Pair_ID: Unique identifier for a cyclone-pair event.
+sample_id: Numerical event index.
+Year: Event year, based on the start of the first qualifying segment.
+Typhoon 1: Cyclone SID of member 1.
+Typhoon 2: Cyclone SID of member 2.
+
+Overlap Start: Start of the first qualifying coexistence segment.
+Overlap End: End of the last qualifying coexistence segment.
+Overlap Duration (hours): Total duration of all qualifying segments, excluding gaps, in hours.
+Both Record Start: Earliest common observation time with valid positions for both members.
+Both Record End: Last common observation time with valid positions for both members.
+Full Path Start: Same as Both Record Start.
+Full Path End: Same as Both Record End.
+Full Path Elapsed Hours: Elapsed time from Full Path Start to Full Path End, in hours.
+
+Typhoon 1 Time: Observation time of member 1.
+Typhoon 2 Time: Observation time of member 2, synchronized with member 1.
+Typhoon 1 Latitude: Latitude of member 1, in degrees north.
+Typhoon 1 Longitude: Longitude of member 1, in degrees, using the −180 to 180 convention.
+Typhoon 1 Intensity: Wind speed of member 1 at the observation time, in knots (kt).
+Typhoon 2 Latitude: Latitude of member 2, in degrees north.
+Typhoon 2 Longitude: Longitude of member 2, in degrees, using the −180 to 180 convention.
+Typhoon 2 Intensity: Wind speed of member 2 at the observation time, in kt.
+Spherical Distance (km): Great-circle distance between the two cyclone centers, in km.
+
+CenterClusterK4: Event's common-center trajectory cluster label for K=4, numbered 1–4.
+in_qualifying_segment: Whether the observation belongs to a continuous qualifying segment lasting at least 24 elapsed hours.
+conditions_met_at_record: Whether both wind speeds are at least 35 kt and center separation is at most 1,800 km at that observation time.
+ClusterType: Same as CenterClusterK4.
+
+Typhoon 1 Datetime: Same as Typhoon 1 Time.
+Typhoon 2 Datetime: Same as Typhoon 2 Time.
+Month: Observation year and month, represented by the first day of the month.
+start_time: Same as Overlap Start.
+end_time: Same as Overlap End.
+both_record_start_time: Same as Both Record Start.
+both_record_end_time: Same as Both Record End.
+qualifying_start_time: Same as Overlap Start.
+qualifying_end_time: Same as Overlap End.
+duration_hours: Same as Overlap Duration (hours).
+cohort_member_1_max_wind: Maximum wind speed of member 1 over the expanded common observation period, in kt.
+cohort_member_2_max_wind: Maximum wind speed of member 2 over the expanded common observation period, in kt.
+
+Environmental fields ending in 1 or 2 refer to member 1 or member 2, respectively.
+
+sst1, sst2: Sea surface temperature, in °C.
+air1, air2: Tropopause temperature, in K.
+t500_c1, t500_c2: Air temperature at 500 hPa, in °C.
+stabily1, stabily2: Stability index defined as 500 hPa air temperature minus sea surface temperature (t500_c − sst), expressed as a temperature difference in °C.
+wind_shear1, wind_shear2: Magnitude of the horizontal wind-vector difference between 200 and 850 hPa, in m/s.
+mld1, mld2: Ocean mixed-layer depth, in m.
+z500_gpm1, z500_gpm2: Geopotential height at 500 hPa, in geopotential meters (gpm).
+
+The following fields average the available values of the two members. If only one member has a valid value, that value is retained.
+
+sst: Mean sea surface temperature of the pair, in °C.
+air: Mean tropopause temperature of the pair, in K.
+wind_shear: Mean vertical wind shear of the pair, in m/s.
+stabily: Mean stability index of the pair, expressed as a temperature difference in °C.
+mld: Mean ocean mixed-layer depth of the pair, in m.
+t500_c: Mean air temperature at 500 hPa of the pair, in °C.
+z500_gpm: Mean geopotential height at 500 hPa of the pair, in gpm.
+
+
+BTC_Duration.csv
+
+A qualifying segment requires both wind speeds to be at least 35 kt and center separation to be at most 1,800 km at consecutive 6-hour observation times over at least 24 elapsed hours. All timestamps are UTC.
+
+sample_id: Numerical event index, matching Data_BTC.csv.
+Pair_ID: Unique cyclone-pair event identifier, matching Data_BTC.csv.
+year: Year of qualifying_start.
+month: Month of qualifying_start, as a number from 1 to 12.
+sid_1: Cyclone SID of member 1.
+name_1: Cyclone name of member 1.
+sid_2: Cyclone SID of member 2.
+name_2: Cyclone name of member 2.
+qualifying_start: Start of the first qualifying coexistence segment.
+qualifying_end: End of the last qualifying coexistence segment.
+qualifying_duration_hours: Total duration of all qualifying segments, excluding gaps, in hours.
+qualifying_record_count: Total number of observations in qualifying segments, including each segment's endpoints.
+n_qualifying_segments: Number of qualifying continuous segments in the event.
+full_start: Start of the original event summary period; equals qualifying_start in this file.
+full_end: Last common observation time of the two members.
+full_duration_hours: Elapsed time from full_start to full_end, in hours.
+full_record_count: Number of observations between full_start and full_end.
+maximum_member_1_kt: Maximum wind speed of member 1 between full_start and full_end, in kt.
+maximum_member_2_kt: Maximum wind speed of member 2 between full_start and full_end, in kt.
+intense: Whether at least one member reaches 115 kt within the original event summary period.
