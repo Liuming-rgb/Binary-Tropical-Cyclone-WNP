@@ -1,0 +1,4 @@
+# Dependencies for prepared NumPy arrays and TensorFlow model training.
+# Versions retained from the original dependency list.
+numpy==2.1.3
+tensorflow==2.21.0
