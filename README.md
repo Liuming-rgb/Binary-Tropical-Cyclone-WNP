@@ -1,6 +1,6 @@
 # Binary Tropical Cyclones over the Western North Pacific
 
-Data and core model code for the study "Prolonged Coexistence of Binary Tropical Cyclones over the Western North Pacific in a Warming Climate".
+Data and core model code accompanying the manuscript "Prolonged Coexistence of Binary Tropical Cyclones over the Western North Pacific in a Warming Climate".
 
 ## Files
 
